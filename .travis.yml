@@ -3,8 +3,8 @@ language: c
 before_install:
   - wget xtuple.com/bootstrap -qO- | sudo bash
   - cd ..
-  - git clone https://github.com/xtuple/xtuple-server-core.git
-  - git clone https://github.com/xtuple/xtuple-server.git
+  - git clone https://github.com/shackbarth/xtuple-server-core.git
+  - git clone https://github.com/shackbarth/xtuple-server.git
 
 install:
   - cd xtuple-server-core
@@ -29,4 +29,5 @@ install:
 
 script:
   - cd ../xtuple-server
+  - ls -l plans
   - sudo node ./cli.js install-pilot --xt-version 4.8.0 --xt-name aurora --pg-capacity 64 --xt-quickstart
