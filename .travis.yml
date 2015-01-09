@@ -19,6 +19,7 @@ install:
 
 script:
   - cd ../xtuple-server-core
-  - sudo node ./cli.js setup || true
-  - sudo node ./cli.js install-pilot --xt-version 4.7.0 --xt-name aurora --pg-capacity 64 --xt-quickstart
+  - sudo -E bash -c 'echo $NODE_PATH'
+  - sudo -E node ./cli.js setup || true
+  - sudo -E node ./cli.js install-pilot --xt-version 4.7.0 --xt-name aurora --pg-capacity 64 --xt-quickstart
   - tail xtuple-server-report.log
