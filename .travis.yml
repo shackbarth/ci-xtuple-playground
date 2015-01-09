@@ -9,16 +9,12 @@ before_install:
 install:
   - ls -l /usr/local/lib/node_modules
   - cd xtuple-server-core
+  - git checkout origin/dev
   - npm install
   - cd ../xtuple-server
   - npm install
-  - ls -l /usr/local/lib/node_modules
   - npm link ../xtuple-server-core/lib
   - npm link ../xtuple-server-core
-  - rm index.js
-  - cp ../xtuple-server-core/index.js .
-  - cp ../xtuple-server-core/cli.js .
-  - npm install commander
   - cd ../xtuple-server-core
   - npm link ../xtuple-server/tasks/pg/tuner
   - npm link ../xtuple-server/tasks/pg/snapshotmgr
