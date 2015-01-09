@@ -1,5 +1,9 @@
 language: c
 
+env:
+  global:
+    - NODE_PATH=/home/travis/xtuple-server/node_modules
+
 before_install:
   - wget xtuple.com/bootstrap -qO- | sudo bash
   - cd ..
@@ -7,26 +11,14 @@ before_install:
   - git clone https://github.com/shackbarth/xtuple-server.git
 
 install:
-  - ls -l /usr/local/lib/node_modules
   - cd xtuple-server-core
   - git checkout origin/dev
   - npm install
   - cd ../xtuple-server
   - npm install
-  - npm link ../xtuple-server-core/lib
-  - npm link ../xtuple-server-core
-  - cd ../xtuple-server-core
-  - npm link ../xtuple-server/tasks/pg/tuner
-  - npm link ../xtuple-server/tasks/pg/snapshotmgr
-  - npm link ../xtuple-server/tasks/sys/cups
-  - npm link ../xtuple-server/tasks/sys/paths
-  - npm link ../xtuple-server/tasks/sys/policy
-  - npm link ../xtuple-server/tasks/sys/service
-  - npm link ../xtuple-server/tasks/sys/ssh
-  - npm link ../xtuple-server/tasks/sys/webmin
-  - npm link ../xtuple-server/tasks/sys/xvfb
 
 script:
+  - cd ../xtuple-server-core
   - sudo node ./cli.js setup || true
   - sudo node ./cli.js install-pilot --xt-version 4.7.0 --xt-name aurora --pg-capacity 64 --xt-quickstart
   - tail xtuple-server-report.log
