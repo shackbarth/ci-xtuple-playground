@@ -5,24 +5,20 @@ env:
     - NODE_PATH=/home/travis/xtuple-server/node_modules
 
 before_install:
-  - pwd
   - cd /home/travis
   - wget xtuple.com/bootstrap -qO- | sudo bash
-  - pwd
   - git clone https://github.com/shackbarth/xtuple-server-core.git
   - git clone https://github.com/shackbarth/xtuple-server.git
 
 install:
   - cd xtuple-server-core
-  - git checkout origin/dev
   - npm install
   - cd ../xtuple-server
-  - git checkout origin/dev
   - npm install
 
 script:
   - cd ../xtuple-server-core
   - sudo -E bash -c 'echo $NODE_PATH'
-  - sudo -E node ./cli.js setup || true
+  - sudo -E node ./cli.js setup
   - sudo -E node ./cli.js install-pilot --xt-version 4.7.0 --xt-name aurora --pg-capacity 64 --xt-quickstart
   - tail xtuple-server-report.log
