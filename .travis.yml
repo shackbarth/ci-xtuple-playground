@@ -22,3 +22,5 @@ script:
   - sudo -E node ./cli.js setup
   - sudo -E node ./cli.js install-pilot --xt-version 4.7.0 --xt-name aurora --pg-capacity 64 --xt-quickstart
   - tail xtuple-server-report.log
+  - cd ../xtuple-server
+  - sudo -E npm test
