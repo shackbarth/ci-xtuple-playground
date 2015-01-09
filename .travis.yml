@@ -1,5 +1,9 @@
 language: c
 
+env:
+  global:
+    - NODE_PATH=/usr/local/lib/node_modules:/usr/local/lib/node_modules/xtuple-server/node_modules:/usr/local/lib/node_modules/xtuple-server-commercial/node_modules
+
 before_install:
   - wget xtuple.com/bootstrap -qO- | sudo bash
   - cd ..
@@ -31,4 +35,4 @@ install:
 script:
   - cd ../xtuple-server
   - sudo node ./cli.js setup
-  - sudo node ./cli.js install-pilot --xt-version 4.8.0 --xt-name aurora --pg-capacity 64 --xt-quickstart
+  - sudo node ./cli.js install-pilot --xt-version 4.7.0 --xt-name aurora --pg-capacity 64 --xt-quickstart
