@@ -19,12 +19,10 @@ install:
 script:
   - cd ../xtuple-server-core
   - sudo -E bash -c 'echo $NODE_PATH'
+  - sudo -E node ./cli.js setup
   - git clone https://github.com/xtuple/xtuple.git
   - cd xtuple
   - git checkout v4.8.0
   - git submodule update --init --recursive
   - cd ..
-  - node -v
-  - n 0.11.13
-  - sudo -E npm test xtuple-server-lib
-  - sudo -E npm test
+  - sudo xtuple-server install-dev --xt-demo --local-workspace ./xtuple
