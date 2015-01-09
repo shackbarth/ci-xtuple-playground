@@ -5,8 +5,10 @@ env:
     - NODE_PATH=/home/travis/xtuple-server/node_modules
 
 before_install:
+  - pwd
   - wget xtuple.com/bootstrap -qO- | sudo bash
   - cd ..
+  - pwd
   - git clone https://github.com/shackbarth/xtuple-server-core.git
   - git clone https://github.com/shackbarth/xtuple-server.git
 
