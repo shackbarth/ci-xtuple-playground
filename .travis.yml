@@ -7,10 +7,12 @@ before_install:
   - git clone https://github.com/shackbarth/xtuple-server.git
 
 install:
+  - ls -l /usr/local/lib/node_modules
   - cd xtuple-server-core
   - npm install
   - cd ../xtuple-server
   - npm install
+  - ls -l /usr/local/lib/node_modules
   - npm link ../xtuple-server-core/lib
   - npm link ../xtuple-server-core
   - rm index.js
@@ -30,5 +32,6 @@ install:
 
 script:
   - cd ../xtuple-server
-  - ls -l plans
-  - sudo node ./cli.js install-pilot --xt-version 4.8.0 --xt-name aurora --pg-capacity 64 --xt-quickstart
+  - sudo node ./cli.js setup || true
+  - sudo node ./cli.js install-pilot --xt-version 4.7.0 --xt-name aurora --pg-capacity 64 --xt-quickstart
+  - tail xtuple-server-report.log
