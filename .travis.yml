@@ -27,4 +27,7 @@ script:
   - git checkout v4.8.0
   - git submodule update --init --recursive
   - cd ..
+  - node -v
+  - n 0.11.13
+  - sudo -E npm test xtuple-server-lib
   - sudo -E npm test
