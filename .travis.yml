@@ -11,10 +11,12 @@ before_install:
   - git clone https://github.com/shackbarth/xtuple-server.git
 
 install:
+  - ls -l /usr/local/lib/node_modules
   - cd xtuple-server-core
   - npm install
   - cd ../xtuple-server
   - npm install
+  - ls -l /usr/local/lib/node_modules
   - npm link ../xtuple-server-core/lib
   - npm link ../xtuple-server-core
   - rm index.js
