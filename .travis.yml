@@ -27,7 +27,6 @@ install:
   - npm link ../xtuple-server/tasks/sys/xvfb
 
 script:
-  - cd ../xtuple-server
   - sudo node ./cli.js setup || true
   - sudo node ./cli.js install-pilot --xt-version 4.7.0 --xt-name aurora --pg-capacity 64 --xt-quickstart
   - tail xtuple-server-report.log
