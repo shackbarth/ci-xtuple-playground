@@ -25,3 +25,4 @@ script:
   - git submodule update --init --recursive
   - cd ..
   - sudo xtuple-server install-dev --xt-demo --local-workspace ./xtuple
+  - sudo xtuple-server uninstall-dev --local-workspace ./xtuple
